@@ -99,3 +99,21 @@ INSERT INTO MembershipPlans (PlanID, PlanName, DurationMonths, MonthlyFee) VALUE
 (13, 'Week Pass', 0, 29.99),
 (14, 'Corporate Monthly', 1, 39.99),
 (15, 'Corporate Annual', 12, 34.99);
+
+INSERT INTO Venues (VenueID, VenueName, Address, Zipcode) VALUES
+(1, 'Downtown Fitness', '88 N 1st St', '95112'),
+(2, 'Westside Gym', '310 Meridian Ave', '95126'),
+(3, 'Eastside Rec Center', '1450 Blossom Hill Rd', '95128'),
+(4, 'North Valley Gym', '720 Hostetter Rd', '95110'),
+(5, 'Central Wellness', '400 W Santa Clara St', '95113'),
+(6, 'SF Market St Gym', '101 Market St', '94102'),
+(7, 'SoMa Fitness', '255 Folsom St', '94103'),
+(8, 'Bay Club Embarcadero', '333 Spear St', '94105'),
+(9, 'Mission Fitness', '3180 18th St', '94107'),
+(10, 'Nob Hill Athletic', '1630 California St', '94109'),
+(11, 'FiDi Gym', '580 California St', '94111'),
+(12, 'LA Fitness Central', '800 S Figueroa St', '90001'),
+(13, 'Hollywood Athletic', '6525 Sunset Blvd', '90002'),
+(14, 'BH Sport Club', '9601 Wilshire Blvd', '90210'),
+(15, 'SD Bayfront Gym', '1 Harbor Dr', '92101');
+
