@@ -121,9 +121,9 @@ def delete_booking(booking_id):
         cursor.execute(
             "DELETE FROM Bookings WHERE BookingID = %s", (booking_id,))
         conn.commit()
-    except mysql.connector.Error as e:
+    except Error:
         conn.rollback()
-        print(f"Error: {e}")
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -132,8 +132,19 @@ def delete_booking(booking_id):
 
 
 def add_member(member_id, name, email, phone, dob, join_date, plan_id, zipcode):
-    if not all([member_id, name, email, phone, dob, join_date, plan_id, zipcode]):
-        return "Error: All member fields are mandatory. No NULL values allowed."
+    fields = {
+        "MemberID": member_id,
+        "Name": name,
+        "Email": email,
+        "Phone": phone,
+        "DOB": dob,
+        "JoinDate": join_date,
+        "PlanID": plan_id,
+        "Zipcode": zipcode,
+    }
+    missing = [k for k, v in fields.items() if v is None or v == ""]
+    if missing:
+        raise ValueError(f"Missing required field(s): {', '.join(missing)}")
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
@@ -145,9 +156,9 @@ def add_member(member_id, name, email, phone, dob, join_date, plan_id, zipcode):
                        dob, join_date, plan_id, zipcode),)
         conn.commit()
         return f"{name} added"
-    except Error as e:
+    except Error:
         conn.rollback()
-        return f"Database Error: {e}"
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -160,9 +171,9 @@ def delete_payment(payment_id):
         cursor.execute(
             "DELETE FROM Payments WHERE PaymentID = %s", (payment_id,))
         conn.commit()
-    except mysql.connector.Error as e:
+    except Error:
         conn.rollback()
-        print(f"Error: {e}")
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -175,13 +186,15 @@ def book_class(booking_id, member_id, class_id, booking_date):
         cursor.execute(
             "SELECT Capacity FROM Classes WHERE ClassID = %s", (class_id,))
         capacity_row = cursor.fetchone()
+        if not capacity_row:
+            raise ValueError(f"Class {class_id} does not exist.")
         cursor.execute(
             "SELECT COUNT(*) FROM Bookings WHERE ClassID = %s", (class_id,))
         current_bookings = cursor.fetchone()[0]
-        if not capacity_row:
-            return f"Error: Class {class_id} does not exist."
         if current_bookings >= capacity_row[0]:
-            return f"Booking Failed: Class {class_id} is at maximum capacity."
+            raise ValueError(
+                f"Class {class_id} is at maximum capacity ({capacity_row[0]})."
+            )
 
         query = """
             INSERT INTO Bookings (BookingID, MemberID, ClassID, BookingDate, Status)
@@ -190,9 +203,9 @@ def book_class(booking_id, member_id, class_id, booking_date):
         cursor.execute(query, (booking_id, member_id, class_id, booking_date))
         conn.commit()
         return f"Class {class_id} booked successfully."
-    except Error as e:
+    except Error:
         conn.rollback()
-        return f"Database Error: {e}"
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -204,9 +217,9 @@ def delete_class(class_id):
     try:
         cursor.execute("DELETE FROM Classes WHERE ClassID = %s", (class_id,))
         conn.commit()
-    except mysql.connector.Error as e:
+    except Error:
         conn.rollback()
-        print(f"Error: {e}")
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -214,7 +227,7 @@ def delete_class(class_id):
 
 def record_payment(payment_id, member_id, amount, pay_date, method, status):
     if float(amount) <= 0:
-        return f"Error: Payment amount {amount} must be greater than zero."
+        raise ValueError(f"Payment amount {amount} must be greater than zero.")
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
@@ -226,9 +239,9 @@ def record_payment(payment_id, member_id, amount, pay_date, method, status):
                        amount, pay_date, method, status))
         conn.commit()
         return f"Payment {payment_id} recorded successfully."
-    except Error as e:
+    except Error:
         conn.rollback()
-        return f"Database Error: {e}"
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -244,9 +257,9 @@ def delete_member(member_id):
             "DELETE FROM Payments WHERE MemberID = %s", (member_id,))
         cursor.execute("DELETE FROM Members WHERE MemberID = %s", (member_id,))
         conn.commit()
-    except mysql.connector.Error as e:
+    except Error:
         conn.rollback()
-        print(f"Error: {e}")
+        raise
     finally:
         cursor.close()
         conn.close()
@@ -263,9 +276,9 @@ def add_staff(staff_id, name, role, email, phone, zipcode):
         cursor.execute(query, (staff_id, name, role, email, phone, zipcode))
         conn.commit()
         return f"Staff {name} added successfully."
-    except Error as e:
+    except Error:
         conn.rollback()
-        return f"Database Error: {e}"
+        raise
     finally:
         cursor.close()
         conn.close()

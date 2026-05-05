@@ -225,13 +225,27 @@ ttk.Combobox(pay_frame, textvariable=py_status,
 def add_payment_click():
     try:
         record_payment(int(py_id.get()), int(py_mem.get()), float(py_amt.get()),
-        py_date.get(), py_method.get(), py_status.get())
+                       py_date.get(), py_method.get(), py_status.get())
         messagebox.showinfo("Done", f"Payment {py_id.get()} recorded.")
         load_payments()
     except Exception as e:
         messagebox.showerror("Error", str(e))
 
+def delete_payment_click():
+    sel = pay_tree.selection()
+    if not sel:
+        messagebox.showwarning("No selection", "Select a payment first.")
+        return
+    pid = pay_tree.item(sel[0])["values"][0]
+    if messagebox.askyesno("Confirm", f"Delete payment {pid}?"):
+        try:
+            delete_payment(int(pid))
+            load_payments()
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
 tk.Button(pay_frame, text="Record Payment", command=add_payment_click).grid(row=2, column=0, columnspan=2, pady=5, padx=5)
+tk.Button(pay_frame, text="Delete Selected", command=delete_payment_click).grid(row=2, column=2, columnspan=2, pady=5)
 
 load_payments()
 root.mainloop()
