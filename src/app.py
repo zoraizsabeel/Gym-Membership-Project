@@ -1,6 +1,15 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from databaseAPI import get_all_members, add_member, delete_member, book_class, delete_booking,get_db_connection. record_payment, delete_payment
+from databaseAPI import (
+    get_all_members,
+    add_member,
+    delete_member,
+    book_class,
+    delete_booking,
+    get_db_connection,
+    record_payment,
+    delete_payment,
+)
 
 
 root = tk.Tk()
@@ -166,19 +175,19 @@ tabs.add(pay_tab, text="Payments")
 pay_cols = ("PaymentID", "MemberID", "Amount", "PayDate", "Method", "Status")
 pay_tree = ttk.Treeview(pay_tab, columns=pay_cols, show="headings", height=11)
 for col in pay_cols:
-    pay_tree.heading(col, text=col)
-    pay_tree.column(col, width=140)
+    pay_tree.heading(col, text=col)
+    pay_tree.column(col, width=140)
 pay_tree.pack(fill="both", expand=True, padx=5, pady=5)
 
 def load_payments():
-    pay_tree.delete(*pay_tree.get_children())
-    conn = get_db_connection()
-    cur = conn.cursor(dictionary=True)
-    cur.execute("SELECT * FROM Payments")
-    for row in cur.fetchall():
-        pay_tree.insert("", "end", values=list(row.values()))
-    cur.close()
-    conn.close()
+    pay_tree.delete(*pay_tree.get_children())
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Payments")
+    for row in cursor.fetchall():
+        pay_tree.insert("", "end", values=list(row.values()))
+    cursor.close()
+    conn.close()
 
 tk.Button(pay_tab, text="Refresh", command=load_payments).pack(anchor="w", padx=5, pady=2)
 
@@ -204,39 +213,25 @@ tk.Entry(pay_frame, textvariable=py_date, width=14).grid(row=1, column=1)
 tk.Label(pay_frame, text="Method").grid(row=1, column=2, padx=4)
 py_method = tk.StringVar(value="Credit Card")
 ttk.Combobox(pay_frame, textvariable=py_method,
-             values=["Credit Card", "Debit Card", "Cash", "PayPal"],
-             width=14, state="readonly").grid(row=1, column=3)
+            values=["Credit Card", "Debit Card", "Cash", "PayPal"],
+            width=14, state="readonly").grid(row=1, column=3)
 
 tk.Label(pay_frame, text="Status").grid(row=1, column=4, padx=4)
 py_status = tk.StringVar(value="Paid")
 ttk.Combobox(pay_frame, textvariable=py_status,
-             values=["Paid", "Pending", "Overdue"],
-             width=10, state="readonly").grid(row=1, column=5)
+            values=["Paid", "Pending", "Overdue"],
+            width=10, state="readonly").grid(row=1, column=5)
 
 def add_payment_click():
-    try:
-        record_payment(int(py_id.get()), int(py_mem.get()), float(py_amt.get()),
-                       py_date.get(), py_method.get(), py_status.get())
-        messagebox.showinfo("Done", "Payment recorded.")
-        load_payments()
-    except Exception as e:
-        messagebox.showerror("Error", str(e))
-
-def delete_payment_click():
-    sel = pay_tree.selection()
-    if not sel:
-        messagebox.showwarning("No selection", "Select a payment first.")
-        return
-    pid = pay_tree.item(sel[0])["values"][0]
-    if messagebox.askyesno("Confirm", f"Delete payment {pid}?"):
-        try:
-            delete_payment(int(pid))
-            load_payments()
-        except Exception as e:
-            messagebox.showerror("Error", str(e))
+    try:
+        record_payment(int(py_id.get()), int(py_mem.get()), float(py_amt.get()),
+        py_date.get(), py_method.get(), py_status.get())
+        messagebox.showinfo("Done", f"Payment {py_id.get()} recorded.")
+        load_payments()
+    except Exception as e:
+        messagebox.showerror("Error", str(e))
 
 tk.Button(pay_frame, text="Record Payment", command=add_payment_click).grid(row=2, column=0, columnspan=2, pady=5, padx=5)
-tk.Button(pay_frame, text="Delete Selected", command=delete_payment_click).grid(row=2, column=2, columnspan=2, pady=5)
 
 load_payments()
 root.mainloop()
