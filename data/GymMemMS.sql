@@ -136,3 +136,24 @@ INSERT INTO Staff (StaffID, Name, Role, Email, Phone, Zipcode) VALUES
 (16, 'Isabelle Mora', 'Zumba Instructor', 'i.mora@gmms.com', '619-555-0618', '92103'),
 (17, 'Ryan Tran', 'Receptionist', 'r.tran@gmms.com', '805-555-0742', '93101');
 
+INSERT INTO Members (MemberID, Name, Email, Phone, DOB, JoinDate, PlanID, Zipcode) VALUES
+(1, 'Jordan Lee', 'jordan.lee@gmail.com', '408-555-2031', '1997-06-14', '2024-01-08', 4, '95112'),
+(2, 'Maya Patel', 'mayap92@gmail.com', '408-555-2178', '1992-03-27', '2024-01-22', 1, '95126'),
+(3, 'Ethan Brooks', 'ebrooks@outlook.com', '408-555-2254', '2001-11-03', '2024-02-05', 7, '95128'),
+(4, 'Chloe Nguyen', 'chloe.n@gmail.com', '408-555-2390', '1988-08-19', '2024-02-14', 3, '95110'),
+(5, 'Amir Hassan', 'amir.h@yahoo.com', '408-555-2467', '1994-01-30', '2024-02-28', 5, '95113'),
+(6, 'Samira Wolfe', 'samira.w@gmail.com', '415-555-2512', '1985-05-11', '2024-03-09', 2, '94102'),
+(7, 'Tyler Nguyen', 'tylern@gmail.com', '415-555-2643', '1999-09-22', '2024-03-17', 6, '94103'),
+(8, 'Linda Osei', 'l.osei@gmail.com', '415-555-2729', '1972-12-05', '2024-03-25', 10, '94105'),
+(9, 'Kai Yamamoto', 'kai.yama@gmail.com', '415-555-2815', '2002-04-17', '2024-04-03', 7, '94107'),
+(10, 'Rachel Torres', 'rachel.t@outlook.com', '415-555-2961', '1991-07-08', '2024-04-11', 4, '94109'),
+(11, 'Marcus Green', 'm.green@gmail.com', '415-555-3074', '1986-02-14', '2024-04-19', 6, '94111'),
+(12, 'Priya Shah', 'priya.shah@gmail.com', '213-555-3118', '1995-10-29', '2024-05-02', 1, '90001'),
+(13, 'Noah Kim', 'noahk01@gmail.com', '213-555-3247', '2003-01-16', '2024-05-13', 7, '90002'),
+(14, 'Vanessa Cruz', 'v.cruz@yahoo.com', '310-555-3389', '1979-06-04', '2024-05-21', 3, '90210'),
+(15, 'Dani Russo', 'dani.russo@gmail.com', '619-555-3452', '1993-03-08', '2024-06-06', 5, '92101'),
+(16, 'Harold Simms', 'harold.s@gmail.com', '619-555-3561', '1967-09-21', '2024-06-14', 11, '92103'),
+(17, 'Zoe Bennett', 'zoe.b@gmail.com', '805-555-3677', '2000-12-31', '2024-06-23', 7, '93101'),
+(18, 'Andre Williams', 'andre.w@gmail.com', '408-555-3784', '1990-05-17', '2024-07-04', 4, '95112'),
+(19, 'Fatima Al-Amin', 'fatima.a@outlook.com', '408-555-3892', '1983-08-09', '2024-07-11', 14, '95126'),
+(20, 'Liam Castro', 'liam.c@gmail.com', '408-555-3945', '1998-02-25', '2024-07-19', 6, '95128');
