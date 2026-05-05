@@ -117,3 +117,22 @@ INSERT INTO Venues (VenueID, VenueName, Address, Zipcode) VALUES
 (14, 'BH Sport Club', '9601 Wilshire Blvd', '90210'),
 (15, 'SD Bayfront Gym', '1 Harbor Dr', '92101');
 
+INSERT INTO Staff (StaffID, Name, Role, Email, Phone, Zipcode) VALUES
+(1, 'Jason Mercer', 'Manager', 'j.mercer@gmms.com', '408-555-0191', '95112'),
+(2, 'Talia Okonkwo', 'Trainer', 't.okonkwo@gmms.com', '408-555-0347', '95126'),
+(3, 'Derek Huang', 'Trainer', 'd.huang@gmms.com', '408-555-0582', '95128'),
+(4, 'Priya Nair', 'Yoga Instructor', 'p.nair@gmms.com', '408-555-0614', '95110'),
+(5, 'Brandon Tills', 'Receptionist', 'b.tills@gmms.com', '408-555-0723', '95113'),
+(6, 'Megan Castillo', 'Trainer', 'm.castillo@gmms.com', '415-555-0139', '94102'),
+(7, 'Omar Shaikh', 'Manager', 'o.shaikh@gmms.com', '415-555-0267', '94103'),
+(8, 'Anita Reyes', 'Spin Instructor', 'a.reyes@gmms.com', '415-555-0418', '94105'),
+(9, 'Chris Baxter', 'Personal Trainer', 'c.baxter@gmms.com', '415-555-0593', '94107'),
+(10, 'Lena Park', 'Nutritionist', 'l.park@gmms.com', '415-555-0672', '94109'),
+(11, 'Marcus Webb', 'Trainer', 'm.webb@gmms.com', '415-555-0751', '94111'),
+(12, 'Sofia Delgado', 'Pilates Instructor', 's.delgado@gmms.com', '213-555-0184', '90001'),
+(13, 'Kevin Yoo', 'Manager', 'k.yoo@gmms.com', '213-555-0329', '90002'),
+(14, 'Natalie Fong', 'Trainer', 'n.fong@gmms.com', '310-555-0461', '90210'),
+(15, 'Darius Cole', 'Trainer', 'd.cole@gmms.com', '619-555-0537', '92101'),
+(16, 'Isabelle Mora', 'Zumba Instructor', 'i.mora@gmms.com', '619-555-0618', '92103'),
+(17, 'Ryan Tran', 'Receptionist', 'r.tran@gmms.com', '805-555-0742', '93101');
+
