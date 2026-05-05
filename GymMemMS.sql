@@ -1,0 +1,5 @@
+CREATE TABLE Zipcodes (
+    Zipcode VARCHAR(10) PRIMARY KEY,
+    City VARCHAR(100) NOT NULL,
+    State VARCHAR(50) NOT NULL
+);
