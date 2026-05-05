@@ -42,8 +42,20 @@ def update_member_contact(member_id, new_email, new_phone):
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "UPDATE Members SET Email = %s, Phone = %s WHERE Member_id = %s",
+        "UPDATE Members SET Email = %s, Phone = %s WHERE MemberID = %s",
         (new_email, new_phone, member_id)
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+
+def update_booking_status(booking_id, new_status):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "UPDATE Payments SET Status = %s WHERE BookingID = %s"
+        (new_status, booking_id)
     )
     conn.commit()
     cursor.close()
