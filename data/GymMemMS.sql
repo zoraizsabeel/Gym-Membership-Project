@@ -61,3 +61,24 @@ CREATE TABLE Payments (
     Method VARCHAR(50) NOT NULL,
     Status VARCHAR(20) NOT NULL
 );
+
+-- Due to requirements asking for at least 15 rows in each table, we have populated the tables below
+
+INSERT INTO Zipcodes (Zipcode, City, State) VALUES
+('95112', 'San Jose', 'CA'),
+('95126', 'San Jose', 'CA'),
+('95128', 'San Jose', 'CA'),
+('95110', 'San Jose', 'CA'),
+('95113', 'San Jose', 'CA'),
+('94102', 'San Francisco', 'CA'),
+('94103', 'San Francisco', 'CA'),
+('94105', 'San Francisco', 'CA'),
+('94107', 'San Francisco', 'CA'),
+('94109', 'San Francisco', 'CA'),
+('94111', 'San Francisco', 'CA'),
+('90001', 'Los Angeles', 'CA'),
+('90002', 'Los Angeles', 'CA'),
+('90210', 'Beverly Hills', 'CA'),
+('92101', 'San Diego', 'CA'),
+('92103', 'San Diego', 'CA'),
+('93101', 'Santa Barbara', 'CA');
