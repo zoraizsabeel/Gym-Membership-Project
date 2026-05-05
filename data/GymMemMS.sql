@@ -82,3 +82,20 @@ INSERT INTO Zipcodes (Zipcode, City, State) VALUES
 ('92101', 'San Diego', 'CA'),
 ('92103', 'San Diego', 'CA'),
 ('93101', 'Santa Barbara', 'CA');
+
+INSERT INTO MembershipPlans (PlanID, PlanName, DurationMonths, MonthlyFee) VALUES
+(1, 'Basic Monthly', 1, 29.99),
+(2, 'Basic Quarterly', 3, 26.66),
+(3, 'Basic Annual', 12, 24.99),
+(4, 'Premium Monthly', 1, 49.99),
+(5, 'Premium Quarterly', 3, 44.99),
+(6, 'Premium Annual', 12, 39.99),
+(7, 'Student Monthly', 1, 19.99),
+(8, 'Student Quarterly', 3, 17.99),
+(9, 'Student Annual', 12, 15.99),
+(10, 'Senior Monthly', 1, 22.99),
+(11, 'Senior Annual', 12, 18.99),
+(12, 'Day Pass', 0, 9.99),
+(13, 'Week Pass', 0, 29.99),
+(14, 'Corporate Monthly', 1, 39.99),
+(15, 'Corporate Annual', 12, 34.99);
