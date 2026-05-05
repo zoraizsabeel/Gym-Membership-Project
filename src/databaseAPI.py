@@ -13,3 +13,11 @@ def get_all_members():
     conn.close()
     return results
 
+def get_member_by_id(member_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Members WHERE MemberID = %s", (member_id))
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return results
