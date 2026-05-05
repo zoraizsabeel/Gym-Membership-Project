@@ -72,3 +72,15 @@ def update_payment_status(payment_id, new_status):
     conn.commit()
     cursor.close()
     conn.close()
+
+
+def update_class_schedule(class_id, new_schedule, new_capacity):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "UPDATE Classes SET Schedule = %s, Capacity = %s WHERE ClassID = %s",
+        (new_schedule, new_capacity, class_id)
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
