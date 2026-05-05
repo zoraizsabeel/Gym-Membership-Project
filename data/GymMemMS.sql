@@ -199,3 +199,24 @@ INSERT INTO Bookings (BookingID, MemberID, ClassID, BookingDate, Status) VALUES
 (19, 5, 12, '2025-05-06', 'Cancelled'),
 (20, 7, 16, '2025-05-06', 'Confirmed');
 
+INSERT INTO Payments (PaymentID, MemberID, Amount, PayDate, Method, Status) VALUES
+(1, 1, 49.99, '2024-01-08', 'Credit Card', 'Paid'),
+(2, 2, 29.99, '2024-01-22', 'Debit Card', 'Paid'),
+(3, 3, 19.99, '2024-02-05', 'Credit Card', 'Paid'),
+(4, 4, 299.88, '2024-02-14', 'Bank Transfer', 'Paid'),
+(5, 5, 134.97, '2024-02-28', 'Credit Card', 'Paid'),
+(6, 6, 79.98, '2024-03-09', 'PayPal', 'Paid'),
+(7, 7, 479.88, '2024-03-17', 'Credit Card', 'Paid'),
+(8, 8, 22.99, '2024-03-25', 'Cash', 'Paid'),
+(9, 9, 19.99, '2024-04-03', 'Debit Card', 'Paid'),
+(10, 10, 49.99, '2024-04-11', 'Credit Card', 'Paid'),
+(11, 11, 479.88, '2024-04-19', 'Credit Card', 'Paid'),
+(12, 12, 29.99, '2024-05-02', 'Debit Card', 'Paid'),
+(13, 13, 19.99, '2024-05-13', 'Cash', 'Paid'),
+(14, 14, 299.88, '2024-05-21', 'Bank Transfer', 'Paid'),
+(15, 15, 134.97, '2024-06-06', 'Credit Card', 'Paid'),
+(16, 16, 227.88, '2024-06-14', 'Credit Card', 'Paid'),
+(17, 17, 19.99, '2024-06-23', 'PayPal', 'Paid'),
+(18, 18, 49.99, '2024-07-04', 'Credit Card', 'Overdue'),
+(19, 19, 39.99, '2024-07-11', 'Debit Card', 'Pending'),
+(20, 20, 479.88, '2024-07-19', 'Credit Card', 'Paid');
