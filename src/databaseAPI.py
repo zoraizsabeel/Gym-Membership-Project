@@ -21,3 +21,22 @@ def get_member_by_id(member_id):
     cursor.close()
     conn.close()
     return results
+
+def get_member_by_email(email):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Members WHERE Email = %s", (email))
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return results
+
+def get_member_by_name(name):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Members WHERE Name = %s", (name))
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return results
+
