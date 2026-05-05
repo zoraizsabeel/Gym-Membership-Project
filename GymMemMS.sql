@@ -15,3 +15,14 @@ CREATE TABLE Venues (
     Address VARCHAR(255) NOT NULL,
     Zipcode VARCHAR(10) REFERENCES Zipcodes(Zipcode)
 );
+
+CREATE TABLE Members (
+	MemberID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(20),
+    DOB DATE,
+    JoinDate DATE NOT NULL,
+    PlanID INT REFERENCES MembershipPlans(PlanID),
+    Zipcode VARCHAR(10) REFERENCES Zipcodes(Zipcode)
+);
