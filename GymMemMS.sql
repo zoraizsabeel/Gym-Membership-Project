@@ -9,3 +9,9 @@ CREATE TABLE MembershipPlans (
     DurationMonths INT NOT NULL,
     MonthlyFee DECIMAL(10, 2) NOT NULL
 );
+CREATE TABLE Venues (
+    VenueID INT PRIMARY KEY,
+    VenueName VARCHAR(100) NOT NULL,
+    Address VARCHAR(255) NOT NULL,
+    Zipcode VARCHAR(10) REFERENCES Zipcodes(Zipcode)
+);
