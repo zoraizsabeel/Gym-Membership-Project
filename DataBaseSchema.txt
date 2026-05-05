@@ -1,0 +1,11 @@
+Zipcodes (Zipcode PK, City, State)
+MembershipPlans (PlanID PK, PlanName, DurationMonths, MonthlyFee)
+Venues (VenueID PK, VenueName, Address, Zipcode FK -> Zipcodes.Zipcode)
+Members (MemberID PK, Name, Email, Phone, DOB, JoinDate, PlanID FK -> MembershipPlans.PlanID, Zipcode FK -> Zipcode.Zipcode)
+Staff (StaffID PK, Name, Role, Email, Phone, Zipcode FK -> Zipcodes.Zipcode)
+Classes (ClassID PK, ClassName, StaffID FK -> Staff.StaffID, Schedule, Capacity, VenueID FK -> Venues.VenueID)
+Booking (BookingID PK, MemberID FK -> Members.MemberID, ClassID FK -> Classes.ClassID, BookingDate, Status)
+Payents(PaymentID PK, MemberID FK -> Members.MemberID, Amount, PayDate, Method, Status)
+
+
+
