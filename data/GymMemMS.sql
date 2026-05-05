@@ -157,3 +157,45 @@ INSERT INTO Members (MemberID, Name, Email, Phone, DOB, JoinDate, PlanID, Zipcod
 (18, 'Andre Williams', 'andre.w@gmail.com', '408-555-3784', '1990-05-17', '2024-07-04', 4, '95112'),
 (19, 'Fatima Al-Amin', 'fatima.a@outlook.com', '408-555-3892', '1983-08-09', '2024-07-11', 14, '95126'),
 (20, 'Liam Castro', 'liam.c@gmail.com', '408-555-3945', '1998-02-25', '2024-07-19', 6, '95128');
+
+INSERT INTO Classes (ClassID, ClassName, StaffID, Schedule, Capacity, VenueID) VALUES
+(1, 'Morning Yoga', 4, '2025-05-06 07:00:00', 20, 1),
+(2, 'HIIT Bootcamp', 2, '2025-05-06 09:00:00', 15, 1),
+(3, 'Spin Class', 8, '2025-05-06 10:30:00', 25, 6),
+(4, 'Pilates Core', 12, '2025-05-06 11:00:00', 12, 12),
+(5, 'Zumba Night', 16, '2025-05-06 18:30:00', 30, 15),
+(6, 'Strength & Conditioning', 3, '2025-05-07 08:00:00', 10, 2),
+(7, 'Evening Yoga', 4, '2025-05-07 19:00:00', 20, 1),
+(8, 'Boxing Basics', 6, '2025-05-07 17:00:00', 12, 6),
+(9, 'Senior Fit', 10, '2025-05-08 10:00:00', 15, 3),
+(10, 'CrossFit WOD', 9, '2025-05-08 07:00:00', 20, 7),
+(11, 'Aqua Aerobics', 2, '2025-05-08 11:00:00', 25, 8),
+(12, 'Body Pump', 3, '2025-05-09 09:00:00', 20, 2),
+(13, 'Guided Meditation', 4, '2025-05-09 07:30:00', 15, 4),
+(14, 'Barre Fusion', 14, '2025-05-09 10:00:00', 12, 14),
+(15, 'Kickboxing', 15, '2025-05-10 18:00:00', 20, 15),
+(16, 'TRX Training', 6, '2025-05-10 08:00:00', 10, 6),
+(17, 'Dance Cardio', 16, '2025-05-10 17:00:00', 30, 5);
+
+INSERT INTO Bookings (BookingID, MemberID, ClassID, BookingDate, Status) VALUES
+(1, 1, 1, '2025-05-01', 'Confirmed'),
+(2, 2, 2, '2025-05-01', 'Confirmed'),
+(3, 3, 3, '2025-05-02', 'Confirmed'),
+(4, 4, 6, '2025-05-02', 'Confirmed'),
+(5, 5, 5, '2025-05-02', 'Confirmed'),
+(6, 6, 3, '2025-05-03', 'Confirmed'),
+(7, 7, 7, '2025-05-03', 'Confirmed'),
+(8, 8, 9, '2025-05-03', 'Confirmed'),
+(9, 9, 1, '2025-05-04', 'Confirmed'),
+(10, 10, 10, '2025-05-04', 'Confirmed'),
+(11, 11, 11, '2025-05-04', 'Confirmed'),
+(12, 12, 4, '2025-05-05', 'Confirmed'),
+(13, 13, 13, '2025-05-05', 'Confirmed'),
+(14, 14, 14, '2025-05-05', 'Confirmed'),
+(15, 15, 15, '2025-05-05', 'Confirmed'),
+(16, 16, 9, '2025-05-05', 'Confirmed'),
+(17, 1, 2, '2025-05-06', 'Waitlisted'),
+(18, 3, 7, '2025-05-06', 'Confirmed'),
+(19, 5, 12, '2025-05-06', 'Cancelled'),
+(20, 7, 16, '2025-05-06', 'Confirmed');
+
