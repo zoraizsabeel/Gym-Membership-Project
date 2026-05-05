@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from databaseAPI import get_all_members, add_member, delete_member
 from databaseAPI import book_class, delete_booking, get_db_connection
+from databaseAPI import record_payment, delete_payment
 
 root = tk.Tk()
 root.title("Gym Management System")
