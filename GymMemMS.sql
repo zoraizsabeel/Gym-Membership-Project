@@ -26,3 +26,21 @@ CREATE TABLE Members (
     PlanID INT REFERENCES MembershipPlans(PlanID),
     Zipcode VARCHAR(10) REFERENCES Zipcodes(Zipcode)
 );
+
+CREATE TABLE Staff (
+    StaffID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Role VARCHAR(50),
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(20),
+    Zipcode VARCHAR(10) REFERENCES Zipcodes(Zipcode)
+);
+
+CREATE TABLE Classes (
+    ClassID INT PRIMARY KEY,
+    ClassName VARCHAR(100) NOT NULL,
+    StaffID INT REFERENCES Staff(StaffID),
+    Schedule DATETIME NOT NULL,
+    Capacity INT NOT NULL,
+    VenueID INT REFERENCES Venues(VenueID)
+);
