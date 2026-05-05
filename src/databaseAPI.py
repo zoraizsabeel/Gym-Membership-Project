@@ -84,3 +84,65 @@ def update_class_schedule(class_id, new_schedule, new_capacity):
     conn.commit()
     cursor.close()
     conn.close()
+
+
+def delete_booking(booking_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "DELETE FROM Bookings WHERE BookingID = %s", (booking_id,))
+        conn.commit()
+    except mysql.connector.Error as e:
+        conn.rollback()
+        print(f"Error: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+
+def delete_payment(payment_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "DELETE FROM Payments WHERE PaymentID = %s", (payment_id,))
+        conn.commit()
+    except mysql.connector.Error as e:
+        conn.rollback()
+        print(f"Error: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+
+def delete_class(class_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("DELETE FROM Classes WHERE ClassID = %s", (class_id,))
+        conn.commit()
+    except mysql.connector.Error as e:
+        conn.rollback()
+        print(f"Error: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+
+def delete_member(member_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "DELETE FROM Bookings WHERE MemberID = %s", (member_id,))
+        cursor.execute(
+            "DELETE FROM Payments WHERE MemberID = %s", (member_id,))
+        cursor.execute("DELETE FROM Members WHERE MemberID = %s", (member_id,))
+        conn.commit()
+    except mysql.connector.Error as e:
+        conn.rollback()
+        print(f"Error: {e}")
+    finally:
+        cursor.close()
+        conn.close()
