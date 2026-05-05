@@ -44,3 +44,20 @@ CREATE TABLE Classes (
     Capacity INT NOT NULL,
     VenueID INT REFERENCES Venues(VenueID)
 );
+
+CREATE TABLE Bookings (
+    BookingID INT PRIMARY KEY,
+    MemberID INT REFERENCES Members(MemberID),
+    ClassID INT REFERENCES Classes(ClassID),
+    BookingDate DATE NOT NULL,
+    Status VARCHAR(20) DEFAULT 'Confirmed'
+);
+
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY,
+    MemberID INT REFERENCES Members(MemberID),
+    Amount DECIMAL(10, 2) NOT NULL,
+    PayDate DATE NOT NULL,
+    Method VARCHAR(50),
+    Status VARCHAR(20)
+);
